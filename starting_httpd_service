@@ -1,0 +1,10 @@
+-
+    name: 'Execute a script on all web server nodes'
+    hosts: web_nodes
+    tasks:
+        -
+            name: 'Execute a script on all web server nodes'
+            script: /tmp/install_script.sh
+        -
+            name: 'start httpd services'
+            service: 'name=httpd state=started'
