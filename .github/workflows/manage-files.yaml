@@ -1,0 +1,27 @@
+name: Global workflow to rule them all
+
+on:
+  push:
+      branches: [ main ] #or main
+
+jobs:
+
+  replicate_changes:
+
+      runs-on: ubuntu-latest
+
+      steps:
+        - name: Checkout repository
+          uses: actions/checkout@v3
+        - name: Replicating global workflow
+          uses: derberg/manage-files-in-multiple-repositories@v2
+          with:
+            github_token: ${{ secrets.MANAGE_FILES_TOKEN }}
+            patterns_to_ignore: '.github/workflows/manage-files.yml'
+            patterns_to_include: '.github/workflows'
+            exclude_private: true
+            exclude_forked: true
+            branches: main
+            committer_username: prithvikumar.detne@gmail.com
+            committer_email: prithvikumar.detne@gmail.com
+            commit_message: "ci: update global workflows"
