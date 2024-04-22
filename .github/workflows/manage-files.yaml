@@ -17,8 +17,9 @@ jobs:
           uses: derberg/manage-files-in-multiple-repositories@v2
           with:
             github_token: ${{ secrets.MANAGE_FILES_TOKEN }}
-            patterns_to_ignore: '.github/workflows/manage-files.yml'
+            patterns_to_ignore: '.github/workflows/greetings.yml'
             patterns_to_include: '.github/workflows'
+            #repos_to_ignore: 'bashscripts'
             exclude_private: true
             exclude_forked: true
             branches: main
